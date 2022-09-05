@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      ListOne
       Script
   other-modules:
       Paths_hello_world
