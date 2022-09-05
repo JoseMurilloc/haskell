@@ -1,6 +1,7 @@
-module GetStarted () where
+module Script () where
 import Data.List
-
+import Data.Map (Map)
+ 
 sumDigits :: Int -> Int
 sumDigits n
 	| n == 0 = 0
@@ -17,6 +18,10 @@ age = 24
 
 name :: [Char]
 name = ['M', 'u', 'r', 'i', 'l', 'l', 'o']
+
+list = []
+
+tuples = ()
 
 fullName :: String
 fullName = "Murillo"
@@ -73,3 +78,16 @@ anotherSumSquares :: Int -> Int -> Int
 anotherSumSquares x y = let sqX = x * x
                             sqY = y * y
                         in sqX + sqY
+
+--  Loops (?)
+
+plusOne :: Int -> Int
+plusOne x = x + 1
+
+listNumbers = [1,2,3,4] :: [Int]
+
+map plusOne listNumbers
+
+isEven n = mod n 2 == 0
+
+filter isEven listNumbers
