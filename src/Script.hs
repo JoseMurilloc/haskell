@@ -2,6 +2,11 @@ module Script () where
 import Data.List
 import Data.Map (Map)
  
+
+{-  Module
+  Comments to used in multiples lines
+  Jose Murillo 
+ -}
 sumDigits :: Int -> Int
 sumDigits n
 	| n == 0 = 0
@@ -57,7 +62,7 @@ maxi n m | n > m = n
          | otherwise = m
 
 xor :: Bool -> Bool -> Bool
-xor x y = (x || y) && not (x && y)
+xor x y  = (x || y) && not (x && y)
 
 -- PATTER MATCH
 eXor :: Bool -> Bool -> Bool
