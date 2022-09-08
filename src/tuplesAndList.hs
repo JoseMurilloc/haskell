@@ -28,8 +28,14 @@ belongs item (x:xs)
   | x == item = True
   | otherwise = belongs item xs   
 
--- 👹 sum all join element is a list
--- sum_pairs :: [Int] -> [Int] -> [Int]
+-- 👹 sum all item is a list that pair
+sum_pairs :: [Int] -> Int
+sum_pairs (x:[])
+  | mod x 2 == 0 = x
+  | otherwise = 0
+sum_pairs (x:xs) 
+  | mod x 2 == 0 = x + sum_pairs xs
+  | otherwise = 0 + sum_pairs xs
 
 -- 👹 bigger element is a list
 bigger_item_list :: [Int] -> Int
@@ -38,3 +44,10 @@ bigger_item_list (x:[]) = x
 bigger_item_list (x:xs) 
   | x > bigger_item_list xs = x
   | otherwise = bigger_item_list xs
+
+
+-- 👺 list only numbers pairs of listing 
+list_pairs :: [Int] -> [Int]
+list_pairs [] = []
+list_pairs (x:xs) = [x | x <- (x:xs), mod x 2 == 0]
+
