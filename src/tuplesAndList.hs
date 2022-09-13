@@ -51,3 +51,13 @@ list_pairs :: [Int] -> [Int]
 list_pairs [] = []
 list_pairs (x:xs) = [x | x <- (x:xs), mod x 2 == 0]
 
+-- Tuples
+
+type Name = String
+type Age = Int
+type Phone = Int
+type Person = (Name, Phone, Age)
+
+getName :: Person -> String
+getName (n,p, a) = n
+
