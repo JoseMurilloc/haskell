@@ -28,6 +28,7 @@ library
       Lib
       ListOne
       Script
+      Supermarket
   other-modules:
       Paths_hello_world
   hs-source-dirs:
