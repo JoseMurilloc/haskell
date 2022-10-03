@@ -28,11 +28,11 @@ getBiggerElement (x:xs)
 
 -- f. Retornar o menor elemento de uma lista
 getSmallerElement :: [Int] -> Int
-getSmallerElement [] = 0
+getSmallerElement [] = (-1)
 getSmallerElement (x:[]) = x
 getSmallerElement (x:xs)
-  | x < getSmallerElement xs = x
-  | otherwise = getSmallerElement xs
+  | x < getSmallerElement xs = xs
+
 
 -- g. Retornar o número de elementos de uma lista.
 getSizeOfList :: [Int] -> Int
