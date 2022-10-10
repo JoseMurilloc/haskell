@@ -1,3 +1,5 @@
+import Data.List
+
 type Name = String
 type Price = Int
 type Code = Int
@@ -11,6 +13,12 @@ type Merchandise = [(Code, Name, Price)]
 sizeLine :: Int
 sizeLine = 30
 
+
+{--
+    Supermarket 👋
+--}
+
+
 tableMerchandise :: Merchandise
 tableMerchandise = [
     (5235, "First Fingers", 121),
@@ -21,9 +29,14 @@ tableMerchandise = [
     (1234, "Dry SHERRY 2LT", 540)]
 
 
+restSmallerTen :: Int -> String
+restSmallerTen value
+    | (mod value 100) < 10 = show (0) ++ show (mod value 100)
+    | otherwise = show (mod value 100)
+
 parseFromReal :: Int -> String
 parseFromReal value
-    | value >= 10 = show (div value 100) ++ "." ++ show ( mod value 100)
+    | value >= 10 = show (div value 100) ++ "." ++ restSmallerTen value
     | otherwise = "0.0" ++ show (mod value 100) 
 
 
@@ -42,11 +55,19 @@ formatTotal :: Price -> String
 formatTotal total = formatLine ("Total", total)
 
 
-type Accounts = (Name, Price)
-formatAccount :: Accounts -> String
-formatAccount listProducts  = "Haskell store\n\n" ++ formatLines listProducts ++ formatTotal (foldl sumTotal 0 listProducts)
-    where sumTotal (name, price) acc = price + acc 
+searchProductsByCode :: Merchandise -> Code -> (Name, Price)
+searchProductsByCode ((code, name, price):xs) codeSearch 
+    | code == codeSearch = (name, price)
+    | otherwise = searchProductsByCode xs codeSearch
 
+calcTotal :: Account -> Price
+calcTotal [] = 0
+calcTotal ((name, price):[]) = price 
+calcTotal ((name, price):xs) = price + calcTotal xs 
+
+createAccount :: Merchandise ->  Cart -> Account
+createAccount tableMerchandises [] = []
+createAccount tableMerchandises ((name, price):xs) = map searchProductsByCode tableMerchandises
 
 
 
