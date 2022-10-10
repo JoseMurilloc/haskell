@@ -8,13 +8,13 @@ frase com as strings separadas por ',' (vírgula), sendo que a última é separa
 
 isPenultimate :: [String] -> Bool
 isPenultimate (x:[]) = True
-isPenultimate (x:xs) = False
+isPenultimate (x:xs) = False    
 
 
 formatWorld :: [String] -> String
-formatWorld (x:[]) = "e " ++ x
+formatWorld (x:[]) = x
 formatWorld (x:xs)
-    | isPenultimate xs = x ++ " " ++ formatWorld xs 
+    | isPenultimate xs = x ++ " e " ++ formatWorld xs 
     | otherwise = x ++ ", " ++ formatWorld xs
 {--
     2) Crie uma função que receba como parâmetro um número inteiro (n) e retorne uma lista com
