@@ -67,22 +67,48 @@ deleteRepeatedElements (x:xs)
 
 {--
     4) Construa uma função que recebe uma lista de nomes e retorna uma tupla com o
-nome e a quantidade de ocorrências deste nome nesta lista.
-Exemplo:
-Prelude> occurrences ["macaco", "macaco", "girafa", "zebra", "zebra",
-"zebra", "macaco", "girafa"]
-[("macaco",3),("girafa",2),("zebra",3)]
+        nome e a quantidade de ocorrências deste nome nesta lista.
+        Exemplo:
+            Prelude> occurrences ["macaco", "macaco", "girafa", "zebra", "zebra",
+            "zebra", "macaco", "girafa"]
+            [("macaco",3),("girafa",2),("zebra",3)]
 --}
 
--- checkAmountOccurrences :: String -> [String] -> Int
--- checkAmountOccurrences name (x:xs)
---     | name == x = 1 + checkAmountOccurrences xs
---     | otherwise = 0
+verifyOccurrencesElement :: [(String, Int)] -> String -> Bool
+verifyOccurrencesElement [] verify = False
+verifyOccurrencesElement ((name, _):xs) verify
+    | name == verify = True
+    | otherwise = verifyOccurrencesElement xs verify
+
+getLengthElement :: [String] -> String -> Int
+getLengthElement [] verify = 0
+getLengthElement (x:xs) verify
+    | x == verify = 1 + getLengthElement xs verify
+    | otherwise = getLengthElement xs verify
+
+formatInTuples :: [String] -> [(String, Int)]
+formatInTuples [] = []
+formatInTuples (x:[]) = (x, 1):[]
+formatInTuples (x:xs) = (x, 1):[] ++ formatInTuples xs
 
 
--- occurrences :: [String] -> [Int]
+-- elemFreqByFirstOcc :: Eq a => [a] -> [(a, Int)]
+-- elemFreqByFirstOcc [] = []
+-- elemFreqByFirstOcc [x] = [(x, 1)]
+-- elemFreqByFirstOcc (x:xs) = zip [x] [(length $ filter (==x) (x:xs))] ++ elemFreqByFirstOcc xs
+
+occurrences :: Eq a => [a] -> [(a, Int)]
+occurrences [] = []
+occurrences (x:xs) = (x, getAmountOccurrences) : occurrences (removeAllOccurrences)
+    where removeAllOccurrences = filter (x /=) xs
+          getAmountOccurrences = length (getEqualOccurrences) + 1
+          getEqualOccurrences = filter (x ==) xs
+
+-- occurrences :: [String] -> [(String, Int)]
 -- occurrences [] = []
--- occurrences (x:xs) = [checkAmountOccurrences (x (x:xs)) | x <- (x:xs)]
+-- occurrences (x:[]) = (x, 1):[]
+-- occurrences (x:xs) = zip x:[] (length $ filter (==x) (x:xs)):[] ++ occurrences xs
+
 
 {-
     5) Um grafo é uma estrutura de dados baseada em uma abstração matemática
