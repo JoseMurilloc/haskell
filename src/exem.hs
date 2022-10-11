@@ -91,23 +91,12 @@ formatInTuples [] = []
 formatInTuples (x:[]) = (x, 1):[]
 formatInTuples (x:xs) = (x, 1):[] ++ formatInTuples xs
 
-
--- elemFreqByFirstOcc :: Eq a => [a] -> [(a, Int)]
--- elemFreqByFirstOcc [] = []
--- elemFreqByFirstOcc [x] = [(x, 1)]
--- elemFreqByFirstOcc (x:xs) = zip [x] [(length $ filter (==x) (x:xs))] ++ elemFreqByFirstOcc xs
-
 occurrences :: Eq a => [a] -> [(a, Int)]
 occurrences [] = []
 occurrences (x:xs) = (x, getAmountOccurrences) : occurrences (removeAllOccurrences)
     where removeAllOccurrences = filter (x /=) xs
           getAmountOccurrences = length (getEqualOccurrences) + 1
           getEqualOccurrences = filter (x ==) xs
-
--- occurrences :: [String] -> [(String, Int)]
--- occurrences [] = []
--- occurrences (x:[]) = (x, 1):[]
--- occurrences (x:xs) = zip x:[] (length $ filter (==x) (x:xs)):[] ++ occurrences xs
 
 
 {-
