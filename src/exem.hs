@@ -1,3 +1,5 @@
+import Data.List
+
 {-
     1) Crie uma função que, dada uma lista de inteiros e um inteiro qualquer,
     retorne todos os inteiros que não são divisíveis por esse inteiro passado
@@ -39,13 +41,28 @@ insertElement (x:xs) newElement i
   | otherwise = x : insertElement xs newElement (i - 1)
 
 {--
-    3) Defina uma função eliminarRepetidos :: [ Int ] - > [ Int ] , que recebe uma
+    3) Defina uma função eliminarRepetidos :: [ Int ] ->  [ Int ] , que recebe uma
     lista de inteiros e devolve a mesma lista, mas sem elementos repetidos,
     mantendo apenas a primeira ocorrência de cada elemento.
     Exemplo
     Prelude> eliminarRepetidos [1,2,1,2,3,4,5,3,7]
     [1,2,3,4,5,7]
 --}
+
+verifyAmountElement :: [Int] -> Int -> Int
+verifyAmountElement [] verify = 0
+verifyAmountElement (x:xs) verify
+    | x == verify = 1 + verifyAmountElement xs verify
+    | otherwise = verifyAmountElement xs verify
+
+
+
+deleteRepeatedElements :: [Int] -> [Int]
+deleteRepeatedElements [] = []
+deleteRepeatedElements (x:[]) = [x]
+deleteRepeatedElements (x:xs)
+    | verifyAmountElement (x:xs) x < 2 = x:[] ++ deleteRepeatedElements xs
+    | otherwise = deleteRepeatedElements xs
 
 
 {--
