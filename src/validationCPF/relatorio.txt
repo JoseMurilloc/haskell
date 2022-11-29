@@ -1,0 +1,13 @@
+CPF: 111.444.777-05 Aluno: Fulano1
+CPF: 111.444.777-02 Aluno: Fulano2
+CPF: 111.444.777-03 Aluno: Fulano3
+CPF: 111.444.777-01 Aluno: Fulano4
+CPF: 111.444.777-12 Aluno: Fulano5
+CPF: 111.444.777-31 Aluno: Fulano6
+
+
+====== Relatorio de notas ======== 
+
+Media: 8.0
+Maior nota: 10.0
+Menor nota: 7.0

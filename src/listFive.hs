@@ -116,6 +116,9 @@ data Month = January | February | March | April | May | June | July | August | S
     c) A função estação, que retorna a estação do ano de acordo com o mês e com o
         hemisfério.
 --}
+months = [January, February, March, April, May, June, July, August, September, October, November, December]
+nextMonth :: Month -> Month
+nextMonth month = 
 
 {--
     6) Faça uma função que receba uma String e retorne True se esta for um palíndromo;

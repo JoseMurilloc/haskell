@@ -1,7 +1,14 @@
+module Main where
+import qualified Data.Map as M
 module Script () where
-import Data.List
-import Data.Map (Map)
- 
+import Data.Char
+
+
+ -- Function polymorphism
+
+size:: [a] -> Int
+size [] = 0
+size (x:xs) = 1 + size xs 
 
 {-  Module
   Comments to used in multiples lines
@@ -87,12 +94,16 @@ anotherSumSquares x y = let sqX = x * x
 --  Loops (?)
 
 plusOne :: Int -> Int
-plusOne x = x + 1
 
+plusOne x = x + 1
 listNumbers = [1,2,3,4] :: [Int]
 
-map plusOne listNumbers
+mapper = M.map plusOne listNumbers
 
-isEven n = mod n 2 == 0
+-- isEven n = mod n 2 == 0
 
-filter isEven listNumbers
+-- filter isEven listNumbers
+
+-- squareSum = sqrt $ 3 + 4 + 6
+
+map (\x -> toUpper x) "Murillo"
